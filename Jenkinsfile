@@ -26,11 +26,12 @@ pipeline {
                     def warFile = "target/sample-app.war"
                     sh """
                         curl --upload-file ${warFile} \
-                        --user ${tomcat}:${tomcat} \
-                        ${http://99.79.194.216:8080}/manager/text/deploy?path=/sample-app&update=true
+                        --user ${TOMCAT_USER}:${TOMCAT_PASS} \
+                        ${TOMCAT_URL}/manager/text/deploy?path=/sample-app&update=true
                     """
                 }
             }
         }
     }
 }
+
